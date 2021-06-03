@@ -60,7 +60,12 @@
 	left:50%;
 	transform: translateX(-50%);
 	}
-	
+	#delete{
+		color: red;
+	}
+	#arrived{
+		color: orange;
+	}
 </style>
 <title>Welcome</title>
 <script type="text/javascript">
@@ -103,7 +108,7 @@ $(function() {
 </script>
 </head>
 <body>
-	
+	<%@ include file="./connection.jsp" %>
 	<%@ include file="./menu.jsp" %>
 	<%! String greeting = "6조 예약 관리 시스템"; 
 	String tagline = "Booking Management";%>
@@ -118,7 +123,6 @@ $(function() {
 				<%= tagline %>
 			</h3>
 		</div>
-			<%@ include file="./connection.jsp" %>
 			<%
 				int tableNum = 1;
 				ResultSet rs = null;
@@ -213,9 +217,9 @@ $(function() {
 							도착시간: <%=rs2.getString("arrivalTime") %><br>
 							<a href="./updateReservation.jsp?id=<%=rs2.getString("oid") %>&table_id=<%=rs2.getString("table_id")%>")="btn btn-secondory" role="button">
 							수정 &raquo;></a>
-							<a href="#" onclick="deleteConfirm('<%=rs2.getString("oid")%>')" class="btn btn-secondory" role="button">
+							<a href="#" id="delete" onclick="deleteConfirm('<%=rs2.getString("oid")%>')" class="btn btn-secondory" role="button">
 							삭제 &raquo;></a>
-							<a href="#" onclick="checkArrived('<%=rs2.getString("oid")%>')" class="btn btn-secondory" role="button">
+							<a href="#" id="arrived" onclick="checkArrived('<%=rs2.getString("oid")%>')" class="btn btn-secondory" role="button">
 							도착 &raquo;></a>
 							</div>
 						<% }

@@ -61,6 +61,7 @@ href = "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
 </script>
 
 <body>
+<%@ include file="./connection.jsp" %>
 <%@ include file="./menu.jsp" %>
 <% String greeting = "대기자 명단"; 
 String tagline = "대기자 등록 및 확인";%>
@@ -75,7 +76,6 @@ String tagline = "대기자 등록 및 확인";%>
 		<%= tagline %>
 	</h2>
 </div>
-<%@ include file="./connection.jsp" %>
 <div>
 <div class="row" align="center">
 			<div class="col-md-7">

@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" %>
+<%@ include file="./connection.jsp" %>
 <% request.setCharacterEncoding("UTF-8");%>
 <!DOCTYPE html>
 <html>
@@ -49,7 +50,7 @@
 			<%= tagline %>
 		</h3>
 	</div>
-	<%@ include file="./connection.jsp" %>
+	<br>
 	<div class="container">
 		<br>
 		<div class="row" align="center">

@@ -12,10 +12,39 @@
 	href = "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
 	<style>
 		table{
-			border:1px solid black;
-			text-align: center;
+			table-layout: fixed;
+			width: 100%;
+			border-collapse: collapse;
+			border: 3px solid purple;
+		}
+		th {
+			border: 1px solid #ff33cc;
+			font-size: 22px;
+		}
+		
+		td{
+			border: 1px solid #ff33cc;
+			font-size: 18px;
+		}
+		.title{
+			font-size: 28px;
+			color: grey;
 		}
 	</style>
+	<script>
+	function checkValidation(){//유효성 검사
+		   var regExpDate = /^\d{4}$/;
+		   var form = document.checkYear;
+		   var year = form.year.value;
+		   if(!regExpDate.test(year)){
+		      alert("연도는 YYYY 형식으로 입력해주세요!");
+		      return;
+		   }
+		   else{
+		      form.submit();
+		   }
+		}
+	</script>
 	<title>이용 통계</title>
 </head>
 <body>
@@ -37,6 +66,12 @@
 		int totalCount = 0;
 		int lastCustomerId = 0;
 		boolean existanceReservation = false;
+		String requestYear = request.getParameter("year");
+		
+		if(requestYear == null){//요청받은 년도가 따로 없을 시 올해 출력
+			requestYear = String.format("%1$tY",java.sql.Date.valueOf(LocalDate.now()));//올해 연도를 문자열로 저장
+		}
+		
 		
 		String sql = "select * from reservation";
 		stmt = conn.createStatement();
@@ -57,7 +92,7 @@
 		  for(int i = 0; i<=N; i++) // 자료구조 초기화
 			  monthArray[i] = 0;
 		  
-		  sql = "select date from reservation";
+		  sql = "select date from reservation ";
 		  stmt = conn.createStatement();
 		  rs = stmt.executeQuery(sql);
 		  
@@ -65,7 +100,7 @@
 		  while(rs.next()){
 			  data = rs.getString("date");
 			  StringTokenizer st = new StringTokenizer(data, "-");
-			  st.nextToken();
+			  if(requestYear.equals(st.nextToken())){
 			  token = st.nextToken();
 			  
 			  if(token != "10") // 10월을 제외하고 01, 02, ... 등에대한 앞글자 0 을 제거한다.
@@ -74,10 +109,16 @@
 			  int monthData = Integer.parseInt(token); // 월 에 대한 string을 최종적으로 monthData라는 변수에 int형으로 저장
 			  
 			  monthArray[monthData]++;
+			  }
 		  }
 		%>
 		<br>
-		<div>올해 월별 이용 횟수</div>
+		<div class="title"><%=requestYear %> 월별 이용 횟수</div>
+		 <form name="checkYear" action="./statistics.jsp">
+                     <label>조회할 연도를 입력하세요</label>
+                     <input type="text" id="year" name="year">
+                     <input type="button" class="btn btn-primary" style=background-color:purple value="조회" onclick="checkValidation()">
+          </form>
 		<table>
 		<tr><th>1월</th><th>2월</th><th>3월</th><th>4월</th><th>5월</th><th>6월</th>
 		<th>7월</th><th>8월</th><th>9월</th><th>10월</th><th>11월</th><th>12월</th></tr>
@@ -100,7 +141,7 @@
 		}
 		
 		if(tableNum==0){%>
-			<div>테이블이 존재하지 않습니다.</div>
+			<div class="title">테이블이 존재하지 않습니다.</div>
 		<%}
 		else{
 			int[] tableRank = new int[tableNum];
@@ -142,7 +183,7 @@
 			
 			%>
 			<br>
-			<div>많이 이용한 테이블 순서</div>
+			<div class="title">많이 이용한 테이블 순서</div>
 			<table>
 			<tr>
 				<th>테이블 번호</th><th>이용횟수</th>
@@ -172,13 +213,13 @@
 		else {
 			%>
 			<br>
-			<div>고객 정보</div>
+			<div class="title">고객 정보</div>
 			<table>
 			<tr>
 				<th>이름</th><th>전화번호</th><th>마일리지</th><th>이용 횟수</th>
 			</tr>
 			<%
-			for(int i = 1; i < lastCustomerId; i++){%>
+			for(int i = 1; i <= lastCustomerId; i++){%>
 				<tr><%
 				sql = "select * from Reservation WHERE customer_id=?";
 				pstmt = conn.prepareStatement(sql);
@@ -206,6 +247,7 @@
 			}
 			%>
 			</table>
+			<br>
 		<%
 		if(!existanceReservation){
 			out.println("예약내역이 존재하지 않습니다.");
