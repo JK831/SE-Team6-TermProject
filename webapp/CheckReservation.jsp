@@ -119,8 +119,7 @@
    for(int i = 0; i < tableNum; i++){
       
    }
-      
-   
+     
    for(int i = 1; i <= tableNum; i++){
       pstmt = null;
       pstmt = conn.prepareStatement(sql2);
@@ -134,17 +133,17 @@
          nowTime = overTime;
       
       if(requestDay==today){//오늘의 예약들은
-      for(int k = 0; k < (nowTime - openTime); k++){//현재 시간 이전의 예약은 비 활성화 
-         if(k< nowTime){
+      for(int k = 0; k <= (nowTime - openTime); k++){//현재 시간 이전의 예약은 비 활성화 
+         if(k< nowTime - openTime){
          flag[i-1][2*k] = false;
          flag[i-1][2*k+1] = false;
          }
          else{
             flag[i-1][2*k] = false;
-         if(Integer.valueOf(nowTimeSet[1])<=10)// 해당 예약시간 20분 전까지만 예약 가능
-            flag[i-1][2*k+1] = true;
-         if(Integer.valueOf(nowTimeSet[1])<=40)// 마찬가지
-            flag[i-1][2*k+2] = true;
+            if(Integer.valueOf(nowTimeSet[1])>10)// 해당 예약시간 20분 전까지만 예약 가능
+                flag[i-1][2*k+1] = false;
+             else if(Integer.valueOf(nowTimeSet[1])>40)// 마찬가지
+                flag[i-1][2*k+2] = false;
          }
       }
       }

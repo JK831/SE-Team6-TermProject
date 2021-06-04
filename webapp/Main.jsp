@@ -82,6 +82,14 @@ function checkValidation() {
                   </nav>
 
             </div>
+            
+            <div class="bottom">
+
+               <!-- Manager Icons -->
+               <br /><br /><br />
+                  <a href="./booking/mainScreen.jsp" class="mbutton">관리자페이지</a>
+
+            </div>
 
          </div>
 
@@ -91,8 +99,7 @@ function checkValidation() {
             <!-- Intro -->
                <section id="top" class="one dark cover">
                   <div class="container">
-
-                     <header>
+                  <header>
                         <h2 class="alt">WELCOME. <strong>KG 6</strong><br />
                         <h6><p>감성적인 뷰로 둘러쌓여있는 최고급 레스토랑<br />
                            최상의 음식과 서비스로 보답하겠습니다.</p></h6>
@@ -101,8 +108,7 @@ function checkValidation() {
                      <footer>
                         <a href="#portfolio" class="button scrolly">NEXT</a>
                      </footer>
-
-                  </div>
+                     </div>
                </section>
 
             <!-- Portfolio -->
@@ -122,13 +128,13 @@ function checkValidation() {
                      <div class="row">
                         <div class="col-4 col-12-mobile">
                            <article class="item">
-                              <a href="#" class="image fit"><img src="./resources/images/pic02.jpg" alt="" /></a>
+                              <a href="#" class="image fit"><img src="resources/images/pic02.jpg" alt="" /></a>
                               <header>
                                  <h3>김동휘</h3>
                               </header>
                            </article>
                            <article class="item">
-                              <a href="#" class="image fit"><img src="./resources/images/pic03.jpg" alt="" /></a>
+                              <a href="#" class="image fit"><img src="resources/images/pic03.jpg" alt="" /></a>
                               <header>
                                  <h3>송준혁</h3>
                               </header>
@@ -136,7 +142,7 @@ function checkValidation() {
                         </div>
                         <div class="col-4 col-12-mobile">
                            <article class="item">
-                              <a href="#" class="image fit"><img src="./resources/images/pic04.jpg" alt="" /></a>
+                              <a href="#" class="image fit"><img src="resources/images/pic04.jpg" alt="" /></a>
                               <header>
                                  <h3>이준기</h3>
                               </header>
@@ -144,13 +150,13 @@ function checkValidation() {
                         </div>
                         <div class="col-4 col-12-mobile">
                            <article class="item">
-                              <a href="#" class="image fit"><img src="./resources/images/pic05.jpg" alt="" /></a>
+                              <a href="#" class="image fit"><img src="resources/images/pic05.jpg" alt="" /></a>
                               <header>
                                  <h3>김경태</h3>
                               </header>
                            </article>
                            <article class="item">
-                              <a href="#" class="image fit"><img src="./resources/images/pic06.jpg" alt="" /></a>
+                              <a href="#" class="image fit"><img src="resources/images/pic06.jpg" alt="" /></a>
                               <header>
                                  <h3>이예원</h3>
                               </header>
