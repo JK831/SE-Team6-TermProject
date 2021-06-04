@@ -3,6 +3,19 @@
 <head>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
 <title>Login</title>
+<style>
+	h1{ 
+		text-align:center; 
+	}
+	h1:after {
+		display:block;
+		content: '';
+		border-bottom: solid 3px #4C4C4C;  
+		transform: scaleX(0);  
+		transition: transform 250ms ease-in-out;
+	}
+	h1:hover:after { transform: scaleX(1); }
+</style>
 </head>
 <body>
 	<jsp:include page="menu.jsp" />
@@ -39,8 +52,5 @@
 		</form>
 	</div>
 </div>
-	
 </body>
-
-
 </html>

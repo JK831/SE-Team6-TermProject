@@ -99,6 +99,17 @@
 	<link rel = "stylesheet"
 	href = "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
 	<style>
+		h1{ 
+			text-align:center; 
+		}
+		h1:after {
+			display:block;
+			content: '';
+			border-bottom: solid 3px #4C4C4C;  
+			transform: scaleX(0);  
+			transition: transform 250ms ease-in-out;
+		}
+		h1:hover:after { transform: scaleX(1); }
 		@media screen and (max-width: 760px){
 		body{
 			font-size:11px;
@@ -122,17 +133,15 @@
 	</head>
 	<body>
 	<%@ include file="./menu.jsp" %>
-	<% String greeting = "예약이 완료되었습니다."; 
-	String tagline = "돌아가기";%>
+	<% String tagline = "돌아가기";%>
 	<div class = "jumbotron">
 		<div class = "container">
-			<p><%= greeting %>
-			</p>
+			<h1>예약이 완료되었습니다.</h1>
 		</div>
 	</div>
 	<div class = "text-center">
 		<p><a href="./Main.jsp">
-			<%= tagline %>
+			돌아가기
 		</a></p>
 	</div>
 	</body>

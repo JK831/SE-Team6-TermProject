@@ -9,6 +9,21 @@
 <link rel = "stylesheet"
 	href = "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
 	<style>
+		h1{ 
+			text-align:center; 
+		}
+		h1:after {
+			display:block;
+			content: '';
+			border-bottom: solid 3px #4C4C4C;  
+			transform: scaleX(0);  
+			transition: transform 250ms ease-in-out;
+		}
+		h1:hover:after { transform: scaleX(1); }
+		
+		.row{
+			justify-content: center;
+		}
 		@media screen and (min-width: 761px){
 			.container p{
 				font-size:calc(1.525rem + 3.3vw);
@@ -83,18 +98,13 @@
 </head>
 <body>
 <%@ include file="./menu.jsp" %>
-	<% String greeting = "예약 등록"; 
-	String tagline = "정보를 입력하세요";%>
 	<div class = "jumbotron">
 		<div class = "container">
-			<p><%= greeting %>
-			</p>
+			<h1>예약 등록</h1>
 		</div>
 	</div>
 	<div class = "text-center">
-		<p>
-			<%= tagline %>
-		</p>
+		<h5>정보를 입력하세요</h5>
 	</div>
 	<%@ include file="./connection.jsp" %>
 	<%

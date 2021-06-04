@@ -4,7 +4,6 @@
 <%@ page import="java.time.LocalDate" %>
 <%@ page import="java.util.StringTokenizer" %>
 <%@ include file="./connection.jsp" %>
-
 <html>
 <head>
 <link rel = "stylesheet"
