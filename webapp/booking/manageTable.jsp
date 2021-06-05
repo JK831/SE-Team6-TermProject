@@ -44,9 +44,7 @@
 			</h3></a>
 		</div>
 		<div class = "text-center">
-			<a onclick="deleteTable()"><h3>
-				테이블 삭제
-			</h3></a>
+			<input type="button" onclick="deleteTable();" value="테이블 삭제">
 		</div>
 </body>
 </html>

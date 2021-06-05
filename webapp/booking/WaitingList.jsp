@@ -33,7 +33,7 @@ href = "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
 	function enter(phoneNumber){
 		if(confirm("고객이 입장 가능합니까?") == true){
 			alert('입장처리가 완료 되었습니다!');
-			location.href = "./enterToTable.jsp?phoneNumber="+phoneNumber;
+			location.href = "./enterToTableFromWaiting.jsp?phoneNumber="+phoneNumber;
 		}
 		else
 			return;
@@ -113,8 +113,8 @@ String tagline = "대기자 등록 및 확인";%>
 	대기번호: <%=rs.getInt("waiting_number") %>
 	이름: <%=rs.getString("name") %>
 	전화번호: <%=rs.getString("phoneNumber") %>
-	<input type="button" value="입장" onclick="enter(<%=rs.getString("phoneNumber")%>">
-	<input type="button" value="취소" onclick="del(<%=rs.getInt("waiting_number")%>">
+	<input type="button" value="입장" onclick="enter(<%=rs.getString("phoneNumber")%>)">
+	<input type="button" value="취소" onclick="del(<%=rs.getInt("waiting_number")%>)">
 	<hr>
 	<%
 	}

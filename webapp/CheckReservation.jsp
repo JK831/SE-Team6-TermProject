@@ -153,28 +153,29 @@
          StringTokenizer st = new StringTokenizer(time,":");
          time = st.nextToken();//hh:mm:ss에서 hh, 시간을 받아온다
          String minute = st.nextToken();
-         int intTime = Integer.valueOf(timeSet[0]) - openTime; //11시가 오픈타임으로 가정
-         
-         if(timeSet[1].equals("00")){//해당 시간 정각에 예약이 있다면
-            if (intTime==0){
-            flag[i-1][intTime] = false; //오픈 시간 예약이라면
-            flag[i-1][intTime+1] = false;//30분 후의 예약 비활성화
-            }
-            else{
-               flag[i-1][2*intTime] = false;
-               flag[i-1][2*intTime-1] = false;//30분 전의 예약 비활성화
-               flag[i-1][2*intTime+1] = false;//30분 후의 예약 비활성화
-            }
+         int intTime = Integer.valueOf(timeSet[0]) - openTime;
+         if(intTime>=0){//0보다 작다면 잘못 된 예약
+	         if(timeSet[1].equals("00")){//해당 시간 정각에 예약이 있다면
+	            if (intTime==0){
+	            flag[i-1][intTime] = false; //오픈 시간 예약이라면
+	            flag[i-1][intTime+1] = false;//30분 후의 예약 비활성화
+	            }
+	            else{
+	               flag[i-1][2*intTime] = false;
+	               flag[i-1][2*intTime-1] = false;//30분 전의 예약 비활성화
+	               flag[i-1][2*intTime+1] = false;//30분 후의 예약 비활성화
+	            }
+	         }
+	         else if(timeSet[1].equals("30")){//30분에 예약이 있다면
+	            
+	            //intTime은 똑같지만 30분 예약이므로 intTime(intTime:00:00)과 자기자신(intTime:30:00), 30분 후의 예약 비활성화   
+	            flag[i-1][2*intTime] = false;//30분 전의 예약 비활성화
+	            flag[i-1][2*intTime+1] = false;
+	            flag[i-1][2*intTime+2] = false;//30분 후의 예약 비활성화
+	         
+	         }
+	         x+=2;
          }
-         else if(timeSet[1].equals("30")){//30분에 예약이 있다면
-            
-            //intTime은 똑같지만 30분 예약이므로 intTime(intTime:00:00)과 자기자신(intTime:30:00), 30분 후의 예약 비활성화   
-            flag[i-1][2*intTime] = false;//30분 전의 예약 비활성화
-            flag[i-1][2*intTime+1] = false;
-            flag[i-1][2*intTime+2] = false;//30분 후의 예약 비활성화
-         
-         }
-         x+=2;
       }
       
       if(pstmt!=null)

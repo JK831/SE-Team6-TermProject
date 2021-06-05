@@ -10,14 +10,6 @@
 	pstmt = conn.prepareStatement(sql);
 	pstmt.setInt(1, waitingNum);
 	pstmt.executeUpdate();
+	response.sendRedirect("./WaitingList.jsp");
 	
 %>
-<html>
-<head>
-</head>
-<body>
-<script>
-	alert('웨이팅 취소가 완료 되었습니다!');
-</script>
-</body>
-</html>
